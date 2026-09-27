@@ -338,9 +338,8 @@ export const TRACKS: Track[] = [
       {
         title: "제작",
         substeps: [
-          { id: "1-0", title: "프모페 · 배너 자동화", description: "자동화 앱으로 소재 생성", tool: "프모페 생성 앱", toolUrl: "https://promotion-design-studio.vercel.app/" },
-          { id: "1-1", title: "피그마로 프모페 제작", description: "수작업 프모페 시안 제작" },
-          { id: "1-2", title: "기본 진입점 제작", description: "항공홈 진입점 배너 제작", tool: "배너 메이커", toolUrl: "https://flight-banner-maker.vercel.app/requests" },
+          { id: "1-0", title: "프모페 제작", description: "프로모션 페이지 제작 및 CMS 등록", tool: "프모페 생성 앱", toolUrl: "https://promotion-design-studio.vercel.app/", links: [{ label: "피그마", url: "https://www.figma.com/design/ZFcsdmhKw6UTGy8IJ923ze/-%ED%95%AD%EA%B3%B5-%EA%B5%AD%EC%A0%9C%EC%84%A0--26%EB%85%84-%ED%94%84%EB%A1%9C%EB%AA%A8%EC%85%98-%ED%85%9C%ED%94%8C%EB%A6%BF?node-id=0-1&t=CxWpKWyS8Te95NUZ-1" }, { label: "CMS 등록", url: "https://promotion.myrealtrip.com/promotion/" }] },
+          { id: "1-2", title: "기본 진입점 제작 및 등록", description: "항공홈 진입점 배너 제작 후 등록", tool: "배너 메이커", toolUrl: "https://flight-banner-maker.vercel.app/requests", links: [{ label: "파트너사이트", url: "https://partner.myrealtrip.com/advertisement/list" }] },
         ],
       },
       {
@@ -356,15 +355,10 @@ export const TRACKS: Track[] = [
     label: "배너",
     steps: [
       {
-        title: "제작",
+        title: "제작 · 등록",
         substeps: [
           { id: "0-0", title: "배너 제작", description: "피그마 '26년 *월' 페이지에서 작업 · 항공사 로고도 있어요", tool: "배너 메이커", toolUrl: "https://flight-banner-maker.vercel.app/requests", links: [{ label: "피그마", url: "https://www.figma.com/design/0PiUr7x2pFG9hpjEdnY2mo/-%ED%94%84%EB%A1%9C%EB%AA%A8%EC%85%98--%ED%95%AD%EA%B3%B5-%ED%99%88-%EB%B0%B0%EB%84%88?node-id=65-226&t=lezmb7YjiEEct6Rn-1" }] },
-        ],
-      },
-      {
-        title: "등록",
-        substeps: [
-          { id: "1-0", title: "배너 등록", description: "파트너사이트 광고 관리에서 등록", tool: "파트너사이트", toolUrl: "https://partner.myrealtrip.com/advertisement/list" },
+          { id: "0-1", title: "배너 등록", description: "파트너사이트 광고 관리에서 등록", tool: "파트너사이트", toolUrl: "https://partner.myrealtrip.com/advertisement/list" },
         ],
       },
     ],

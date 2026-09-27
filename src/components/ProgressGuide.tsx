@@ -15,6 +15,12 @@ function loadDone(): DoneState {
   }
 }
 
+type StepLink = { label: string; url: string };
+
+// 피그마 링크는 항상 맨 앞에 표시한다.
+const figmaLinks = (links: StepLink[] = []) => links.filter((l) => l.label === "피그마");
+const otherLinks = (links: StepLink[] = []) => links.filter((l) => l.label !== "피그마");
+
 export function ProgressGuide() {
   const [trackId, setTrackId] = useState(TRACKS[0].id);
   const [done, setDone] = useState<DoneState>(() => loadDone());
@@ -104,6 +110,11 @@ export function ProgressGuide() {
                       </span>
                     </button>
                     <div className="guide-substep-tools">
+                      {figmaLinks(sub.links).map((link) => (
+                        <a key={link.label} href={link.url} target="_blank" rel="noreferrer" className="guide-substep-tool guide-substep-tool-link">
+                          {link.label}
+                        </a>
+                      ))}
                       {sub.tool &&
                         (sub.toolUrl ? (
                           <a href={sub.toolUrl} target="_blank" rel="noreferrer" className="guide-substep-tool guide-substep-tool-link">
@@ -112,7 +123,7 @@ export function ProgressGuide() {
                         ) : (
                           <span className="guide-substep-tool">{sub.tool}</span>
                         ))}
-                      {sub.links?.map((link) => (
+                      {otherLinks(sub.links).map((link) => (
                         <a key={link.label} href={link.url} target="_blank" rel="noreferrer" className="guide-substep-tool guide-substep-tool-link">
                           {link.label}
                         </a>
