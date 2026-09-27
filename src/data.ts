@@ -314,7 +314,7 @@ export const TRACKS: Track[] = [
       {
         title: "본프로모션 준비",
         substeps: [
-          { id: "2-0", title: "프모페 제작", description: "본프로모션 페이지 제작 및 CMS 등록", tool: "프모페 생성 앱", toolUrl: "https://promotion-design-studio.vercel.app/", links: [{ label: "피그마", url: "https://www.figma.com/design/kBfQMzTMmrvVM3Xu7WhkjO/%ED%95%AD%EA%B3%B5-%ED%94%84%EB%A1%9C%EB%AA%A8%EC%85%98_%ED%86%B5%ED%95%A9?node-id=7896-17335&t=0uotC2qViYWMQW21-1" }] },
+          { id: "2-0", title: "프모페 제작", description: "본프로모션 페이지 제작 및 CMS 등록", links: [{ label: "피그마", url: "https://www.figma.com/design/kBfQMzTMmrvVM3Xu7WhkjO/%ED%95%AD%EA%B3%B5-%ED%94%84%EB%A1%9C%EB%AA%A8%EC%85%98_%ED%86%B5%ED%95%A9?node-id=7896-17335&t=0uotC2qViYWMQW21-1" }, { label: "CMS 등록", url: "https://promotion.myrealtrip.com/promotion/" }] },
           { id: "2-2", title: "숏컷 변경", description: "본프로모션용 숏컷으로 교체", tool: "파트너사이트", toolUrl: "https://partner.myrealtrip.com/advertisement/list", links: [{ label: "피그마", url: "https://www.figma.com/design/kBfQMzTMmrvVM3Xu7WhkjO/%ED%95%AD%EA%B3%B5-%ED%94%84%EB%A1%9C%EB%AA%A8%EC%85%98_%ED%86%B5%ED%95%A9?node-id=7658-16813&t=0uotC2qViYWMQW21-1" }] },
           { id: "2-1", title: "당일 최저가 업데이트", description: "당일 최저가로 노선 카드 갱신", tool: "프로모킷", toolUrl: "https://my-real-promokit.streamlit.app/" },
         ],
