@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { TRACKS } from "../data";
+import { EXPORT_SPECS, TRACKS } from "../data";
 
 type DoneState = Record<string, string[]>;
 
@@ -76,6 +76,8 @@ export function ProgressGuide() {
           </div>
         </div>
 
+        {track.steps.length === 0 && <div className="guide-empty">단계 준비 중이에요</div>}
+
         {track.steps.map((step) => {
           stepCounter += 1;
           const stepNumber = stepCounter;
@@ -91,25 +93,49 @@ export function ProgressGuide() {
               {step.substeps.map((sub) => {
                 const isDone = doneIds.includes(sub.id);
                 return (
-                  <button
-                    key={sub.id}
-                    className="guide-substep-row"
-                    onClick={() => toggle(sub.id)}
-                  >
-                    <span className={`guide-check ${isDone ? "guide-check-done" : ""}`}>
-                      {isDone ? "✓" : ""}
-                    </span>
-                    <span className="guide-substep-text">
-                      <span className="guide-substep-title">{sub.title}</span>
-                      <span className="guide-substep-desc">{sub.description}</span>
-                    </span>
-                    {sub.tool && <span className="guide-substep-tool">{sub.tool}</span>}
-                  </button>
+                  <div key={sub.id} className="guide-substep-row">
+                    <button className="guide-substep-main" onClick={() => toggle(sub.id)}>
+                      <span className={`guide-check ${isDone ? "guide-check-done" : ""}`}>
+                        {isDone ? "✓" : ""}
+                      </span>
+                      <span className="guide-substep-text">
+                        <span className="guide-substep-title">{sub.title}</span>
+                        <span className="guide-substep-desc">{sub.description}</span>
+                      </span>
+                    </button>
+                    <div className="guide-substep-tools">
+                      {sub.tool &&
+                        (sub.toolUrl ? (
+                          <a href={sub.toolUrl} target="_blank" rel="noreferrer" className="guide-substep-tool guide-substep-tool-link">
+                            {sub.tool}
+                          </a>
+                        ) : (
+                          <span className="guide-substep-tool">{sub.tool}</span>
+                        ))}
+                      {sub.links?.map((link) => (
+                        <a key={link.label} href={link.url} target="_blank" rel="noreferrer" className="guide-substep-tool guide-substep-tool-link">
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
                 );
               })}
             </div>
           );
         })}
+      </div>
+
+      <div className="guide-specs">
+        <div className="guide-specs-title">소재별 추출 규격</div>
+        <div className="guide-specs-grid">
+          {EXPORT_SPECS.map((item) => (
+            <div key={item.target} className="guide-specs-item">
+              <span className="guide-specs-target">{item.target}</span>
+              <span className="guide-specs-value">{item.spec}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

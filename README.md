@@ -1,32 +1,118 @@
-# React + TypeScript + Vite
+# ✈️ 항공 마케팅 운영 포탈
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+항공사업실 마케팅 업무에 쓰는 도구, 시트, 어드민 링크를 한곳에 모은 포탈입니다.
+프로모션 준비 단계를 체크리스트로 따라갈 수 있고, 항공홈 캐로셀 시안과 일괄등록 엑셀도 여기서 바로 만들 수 있습니다.
 
-Currently, two official plugins are available:
+🔗 **바로가기: https://mrt-flight-promotion.vercel.app**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 화면 구성
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+왼쪽 메뉴를 누르면 해당 영역으로 이동합니다.
 
-## Expanding the Oxlint configuration
+| 영역 | 들어 있는 것 |
+|---|---|
+| **기획 · 문서** | PDR 생성 앱, PDR 관리 시트, 라이브 상품안 드라이브 |
+| **소재 제작** | 프모페 생성 앱, 기본 진입점 배너 메이커, DA 숏츠 메이커, 지금 특가 AI 동영상 제작, 캐로셀 자동화 |
+| **최저가 · 항공링크** | 프로모킷, 마프랩(myreal flight pricing lab), 항공링크 생성 시트 |
+| **플러그인 도구** | CMS 앵커링 자동화, 피그마 노선 카드 생성, RENAME IT |
+| **내부 어드민** | 매니저 페이지 및 구좌(지금 특가, 플로팅 배너, 캐로셀, 배너·팝업·숏컷 등록 등), 라이브 관리(샵라이브, 에어브릿지 시트, 경품 추첨 시트, KIE 라이브 에셋) |
+| **진행 가이드** | 프로모션 유형별 준비 단계 체크리스트와 소재별 추출 규격 |
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+카드를 누르면 해당 도구가 새 탭으로 열립니다.
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+---
+
+## 진행 가이드 사용법
+
+1. 상단 탭에서 진행할 업무를 고릅니다.
+   `라이브` · `기획전` · `배너` · `캐로셀` · `숏컷` · `당일 최저가 업데이트`
+2. 단계 오른쪽의 파란 링크(예: `PDR 생성 앱`, `피그마`, `어드민`)를 누르면 그 단계에 필요한 도구로 바로 이동합니다.
+3. 끝낸 단계는 왼쪽 동그라미를 눌러 체크합니다. 상단 진행 바가 함께 차오릅니다.
+4. 체크 상태는 **내 브라우저에만 저장**됩니다. 다른 사람과 공유되지 않고, 다른 PC나 브라우저에서는 보이지 않습니다.
+5. 새 프로모션을 시작할 때는 `초기화`를 누르세요. 지금 보고 있는 탭만 초기화됩니다.
+
+### 소재별 추출 규격
+
+| 소재 | 규격 |
+|---|---|
+| PC 배너 | JPEG 2배수 |
+| MO 배너 | JPEG 3배수 |
+| 메인홈 팝업 | JPEG 4배수 |
+| 숏컷 | 40×40 · JPEG 3배수 |
+| 메인홈 · 버티컬홈 배너 | JPEG 1배수 |
+| OG 이미지 (CMS 썸네일) | JPEG 1배수 |
+
+---
+
+## 캐로셀 자동화 사용법
+
+노선을 입력하면 **최저가 조회 → 여행지 사진 → 항공사 발송용 시안 → 일괄등록 엑셀**까지 한 번에 만듭니다.
+포탈의 `소재 제작 → 캐로셀 자동화` 카드나 [/carousel](https://mrt-flight-promotion.vercel.app/carousel)에서 엽니다.
+
+1. **항공사 · 테마**
+   항공사 코드(예: `7C`)와 왕복/편도를 고르고, 이모지와 시안 제목을 입력합니다.
+   전체 항공사로 조회하려면 `ALL`을 입력하세요.
+2. **노선 입력**
+   한 줄에 노선 하나씩 입력합니다. `ICN-TPE`와 `ICN TPE` 둘 다 됩니다. 입력 후 `노선 불러오기`를 누르세요.
+3. **탑승 기간**
+   이 기간 안에서 최저가 날짜를 찾습니다. 최대 180일까지 됩니다.
+4. **여행지 사진**
+   Unsplash Access Key를 넣고 `사진 일괄 불러오기`를 누릅니다.
+   키는 내 브라우저에만 저장됩니다. 마음에 안 드는 사진은 6번에서 URL을 직접 넣어 바꿀 수 있습니다.
+5. **최저가 일괄 조회**
+   별도 키 없이 `최저가 일괄 조회`를 누르면 됩니다. **평균 3분**이 걸리고, 진행 상황이 실시간으로 표시됩니다.
+   - 국제선 직항 왕복만 자동으로 조회됩니다. 국내선은 가격을 직접 입력하세요.
+   - ⚠️ 사진 불러오기와 최저가 조회는 **동시에 실행할 수 없습니다.** 하나가 끝난 뒤 다른 하나를 실행하세요.
+6. **노선별 확인**
+   날짜, 가격, 사진, 슬롯 이름을 확인하고 필요하면 고칩니다.
+   가격이 이상해 보이면 `검색`이나 상단 `마프랩 열기`로 다시 확인하세요.
+7. **다운로드**
+   상단 버튼으로 결과물을 받습니다.
+   - `엑셀만`: CMS 일괄등록 템플릿 형식의 xlsx
+   - `시안 PNG만`: 항공사에 보낼 시안 이미지
+   - `시안 + 엑셀 ZIP 다운`: 엑셀, 시안 PNG, 캐로셀 등록용 정사각형 사진을 한 번에
+
+받은 파일은 `내부 어드민 → 캐로셀 등록`(버티컬홈 관리)에서 등록합니다.
+
+---
+
+## 자주 묻는 것
+
+- **사진이 안 불러와져요 (요청 한도 초과 403)**
+  Unsplash 무료 키는 시간당 50회로 제한됩니다. 잠시 뒤 다시 시도하거나 사진 URL을 직접 넣으세요.
+- **최저가가 "조회 서버 연결 실패"로 나와요**
+  `최저가 일괄 조회`를 한 번 더 누르세요. 그래도 안 되면 마프랩에서 직접 확인한 뒤 가격을 입력하세요.
+- **새 링크나 도구를 추가하고 싶어요**
+  아래 "관리자용"을 참고하거나 포탈 관리자에게 요청하세요.
+
+---
+
+## 관리자용
+
+### 로컬 실행
+
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### 내용 수정
+
+카드, 어드민 링크, 진행 가이드 단계, 추출 규격은 모두 [`src/data.ts`](src/data.ts) 한 파일에서 관리합니다.
+
+| 수정할 것 | `data.ts`에서 찾을 곳 |
+|---|---|
+| 도구 카드 | `TOOL_SECTIONS` |
+| 내부 어드민 링크 | `ADMIN_GROUPS` |
+| 진행 가이드 단계와 링크 | `TRACKS` |
+| 소재별 추출 규격 | `EXPORT_SPECS` |
+
+### 배포
+
+Vercel(`mrt-flight-promotion`)로 배포합니다.
+
+```bash
+vercel deploy --prod
+```
